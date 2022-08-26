@@ -22,12 +22,12 @@ const getData = ({ meals }) => {
   }
 };
 
-function getOnlyIngredients(meal) {
+function getValuesByKey(meal, keyField) {
   const arrFromObj = Object.entries(meal)
   const allIngredients = arrFromObj.filter(([key, value]) => {
-    return key.includes('strIngredient') && value !== ''
-  })
-  console.log(allIngredients);
+    return key.includes(keyField.trim()) && value !== ''
+  }).map(([_, val]) => val )
+  return allIngredients
 }
 
 async function openModal(id) {
@@ -37,12 +37,22 @@ async function openModal(id) {
   const { meals } = await data.json();
   const [meal] = meals;
   modal.style.display = "flex";
-  getOnlyIngredients(meal)
+  const ingredients = getValuesByKey(meal,'strIngredient')
+  const measures = getValuesByKey(meal, 'strMeasure')
+  
+  // console.log(meal);
   modal.innerHTML = `
         <div class=modal-container>
-        <button onclick="closeModal()" class=close-btn><i class="fa fa-times" aria-hidden="true"></i>
+        <button onclick="closeModal()" class=close-btn>
+        <i class="fa fa-times" aria-hidden="true"></i>
         </button>
-            <img src=${meal.strMealThumb} />
+        <div class=left-part>
+          <img src=${meal.strMealThumb} />
+        </div>
+        <div class=right-part>
+          <h2 class=right-part__header>${meal.strMeal}</h2>
+          <p class=right-part__instructions>${meal.strInstructions}</p>
+        </div>
         </div>`;
 }
 

@@ -17,33 +17,33 @@
 }
 
 .search-input-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    width: 600px;
-    height: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 600px;
+  height: 60px;
 }
 
 #search-input {
-    flex: 1;
-    border-radius: 16px;
-    border: none;
-    margin-right: 16px;
-    font-size: 24px;
-    font-weight: 400;
-    padding-left: 16px;
-    letter-spacing: 4px;
+  flex: 1;
+  border-radius: 16px;
+  border: none;
+  margin-right: 16px;
+  font-size: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  letter-spacing: 4px;
 }
 
 #search-btn {
-    border-radius:16px;
-    width: 100px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: rgb(124, 111, 94);
-    letter-spacing: 4px;
+  border-radius: 16px;
+  width: 100px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: rgb(124, 111, 94);
+  letter-spacing: 4px;
 }
 
 .recipes-list {
@@ -67,10 +67,9 @@
   overflow: hidden;
 }
 
-
 .recipe-box:hover .view-btn {
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 .recipe-box img {
@@ -84,52 +83,79 @@
 }
 
 .view-btn {
-    position: absolute;
-    width: 100px;
-    height: 40px;
-    background-color: lightgreen;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity:0.4;
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.4;
 }
 
 .modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6)
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-container {
-    display: flex;
-    position: relative;
-    width: 80%;
-    height: 80%;
-    background-color: white;
-    border-radius: 16px;
-    overflow: hidden;
+  display: flex;
+  position: relative;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .close-btn {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    width: 30px;
-    height: 30px;
-    background:none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .close-btn i {
-    font-size: 30px;
+  font-size: 30px;
+}
+
+.left-part {
+  flex: 1;
+}
+
+.left-part img {
+  width: 100%;
+  height: 100%;
+}
+
+.right-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+}
+
+.right-part__header {
+  margin-top: 30px;
+}
+
+.right-part__instructions {
+  margin-top: 30px;
+  width: 80%;
+  text-align: justify;
 }
