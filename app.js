@@ -22,6 +22,14 @@ const getData = ({ meals }) => {
   }
 };
 
+function getOnlyIngredients(meal) {
+  const arrFromObj = Object.entries(meal)
+  const allIngredients = arrFromObj.filter(([key, value]) => {
+    return key.includes('strIngredient') && value !== ''
+  })
+  console.log(allIngredients);
+}
+
 async function openModal(id) {
   const data = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -29,6 +37,7 @@ async function openModal(id) {
   const { meals } = await data.json();
   const [meal] = meals;
   modal.style.display = "flex";
+  getOnlyIngredients(meal)
   modal.innerHTML = `
         <div class=modal-container>
         <button onclick="closeModal()" class=close-btn><i class="fa fa-times" aria-hidden="true"></i>
