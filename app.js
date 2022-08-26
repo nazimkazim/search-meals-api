@@ -28,21 +28,17 @@ async function openModal(id) {
   );
   const { meals } = await data.json();
   const [meal] = meals;
-  modal.innerHTML = `<div class=modal-overlay>
+  modal.style.display = "flex";
+  modal.innerHTML = `
         <div class=modal-container>
         <button onclick="closeModal()" class=close-btn><i class="fa fa-times" aria-hidden="true"></i>
         </button>
             <img src=${meal.strMealThumb} />
-        </div>
-     </div>`;
-
-  const modalOverlay = document.querySelector(".modal-overlay");
-  modalOverlay.style.display = "flex";
+        </div>`;
 }
 
 function closeModal() {
-  const modalOverlay = document.querySelector(".modal-overlay");
-  modalOverlay.style.display = "none";
+  modal.style.display = "none";
 }
 /* 
 fetch('https://restcountries.com/v2/name/american')

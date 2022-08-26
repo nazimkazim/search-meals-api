@@ -97,7 +97,7 @@
     opacity:0.4;
 }
 
-.modal-overlay {
+.modal {
     display: none;
     justify-content: center;
     align-items: center;
