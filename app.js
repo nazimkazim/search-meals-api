@@ -26,7 +26,7 @@ function getValuesByKey(meal, keyField) {
   const arrFromObj = Object.entries(meal)
   const allIngredients = arrFromObj.filter(([key, value]) => {
     return key.includes(keyField.trim()) && value !== ''
-  }).map(([_, val]) => val )
+  }).filter(([_,val]) => val !== null).map(([_, val]) => val)
   return allIngredients
 }
 
@@ -39,8 +39,6 @@ async function openModal(id) {
   modal.style.display = "flex";
   const ingredients = getValuesByKey(meal,'strIngredient')
   const measures = getValuesByKey(meal, 'strMeasure')
-  
-  // console.log(meal);
   modal.innerHTML = `
         <div class=modal-container>
         <button onclick="closeModal()" class=close-btn>
@@ -52,8 +50,25 @@ async function openModal(id) {
         <div class=right-part>
           <h2 class=right-part__header>${meal.strMeal}</h2>
           <p class=right-part__instructions>${meal.strInstructions}</p>
+          <div class=ingredients-measurements-container>
+            <ul class=ingredients></ul>
+            <ul class=measures></ul>
+          </div>
         </div>
         </div>`;
+        const ingredientsEl = document.querySelector('.ingredients')
+        const measuresEl = document.querySelector('.measures')
+        for (let i = 0; i < ingredients.length; i++) {
+          const ingredient = ingredients[i];
+          ingredientsEl.innerHTML += 
+          `<li>${ingredient}</li>`
+        }
+
+        for (let i = 0; i < measures.length; i++) {
+          const measure = measures[i];
+          measuresEl.innerHTML += 
+          `<li>${measure}</li>`
+        }
 }
 
 function closeModal() {
