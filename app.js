@@ -12,7 +12,9 @@ const getData = ({ meals }) => {
   for (let i = 0; i < meals.length; i++) {
     const meal = meals[i];
 
-    recipesList.innerHTML += `<div class=recipe-box>
+    recipesList.innerHTML += 
+    `<div class=recipe-box>
+        <span>${meal.strArea}</span>
         <img src='${meal.strMealThumb}' />
         <p>${meal.strMeal.slice(0, 10)}...</p>
         <button onclick="openModal('${
@@ -54,10 +56,12 @@ async function openModal(id) {
             <ul class=ingredients></ul>
             <ul class=measures></ul>
           </div>
+          ${meal.strYoutube && `<a class=watch-video href=${meal.strYoutube} target=_blank>watch video</a>`}
         </div>
         </div>`;
         const ingredientsEl = document.querySelector('.ingredients')
         const measuresEl = document.querySelector('.measures')
+        
         for (let i = 0; i < ingredients.length; i++) {
           const ingredient = ingredients[i];
           ingredientsEl.innerHTML += 
@@ -72,7 +76,7 @@ async function openModal(id) {
 }
 
 function closeModal() {
-  modal.style.display = "none";
+  modal.style.display = "none"; 
 }
 /* 
 fetch('https://restcountries.com/v2/name/american')
